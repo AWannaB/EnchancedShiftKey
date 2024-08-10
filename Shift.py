@@ -1,25 +1,21 @@
 import keyboard
 import time
-# Starts an infinite loop
+# Starts a Loop
 while True:
-    # The program does nothing until the Shift key is pressed
+    # Pauses the porgram until the shift key is pressed
     keyboard.wait('shift')
-    # Reads the shift key (this is the fastest way to solve the issue of the code capitalizing the shift key and having no effect)
+    # Easiest way to get rid of the problem where the code will read the shift key and capitalize it
     key0 = keyboard.read_key()
-    # Reads the key that needs to be capitalized
+    # Reads the key that needs the be capitalized 
     key1 = keyboard.read_key()
-    # Capitalizes the key if it is an alphabetic key and does nothing if it is not
-    key2 = key1.upper() if key1.isalpha() else key1
-    # Stops from printing the following keys
-    if key2 == key1 or key2 == 'SHIFT' or key2 == 'RIGHT SHIFT' or key2 == 'ENTER':
-        continue
-    elif key2 == 'BACKSPACE' or key2 == 'TAB' or key2 == 'CTRL' or key2 == 'SPACE' or key2 == 'ALT':
-        continue
-    else:
-        # Deletes the lower case letter
+    # If the key is not in the alphabet and if it is only 1 character it will not run
+    if key1.isalpha() and len(key1) == 1:
+        # Capitalize they key
+        key2 = key1.upper()
+        # Deletes the lowercase letter
         keyboard.press_and_release('backspace')
-        '''Fixes bug on lower-end systems form interpreting the 
-        backspace and writeing the capitalized letter in the wrong order'''
         time.sleep(0.05)
-        # Writes the capitalized letter
+        # Writes the capitalized key 
         keyboard.write(key2)
+    else:
+        continue

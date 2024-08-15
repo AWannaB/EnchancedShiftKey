@@ -12,6 +12,11 @@ while True:
     if key1.isalpha() and len(key1) == 1:
         # Capitalize they key
         key2 = key1.upper()
+        # If the key is already uppercase do nothing
+        if key1 == key2:
+            continue
+        # Bug fix on lowerend systems
+        time.sleep(0.05)
         # Deletes the lowercase letter
         keyboard.press_and_release('backspace')
         time.sleep(0.05)
